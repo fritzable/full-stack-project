@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   patch '/change-password' => 'users#changepw'
   # Books resources routes
   get '/books' => 'books#index'
+  get '/books/:id' => 'books#show'
 
   # Patients resource routes
   get '/patients' => 'patients#index'
+
+  # Ingredients resource routes
+  get '/ingredients' => 'ingredients#index'
 end
