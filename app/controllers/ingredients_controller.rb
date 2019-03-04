@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  before_action :set_ingredient, only: %i[show update destroy]
+
   def index
     @ingredients = Ingredient.all
     render json: @ingredients
@@ -27,6 +29,17 @@ class IngredientsController < ApplicationController
     else
       render json: @ingredient.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    # @ingredient = Ingredient.find(params[:id])
+
+    @ingredient.destroy
+    head :no_content
+  end
+
+  def set_ingredient
+    @ingredient = Ingredient.find(params[:id])
   end
 
   def ingredient_params
