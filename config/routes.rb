@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   delete '/sign-out' => 'users#signout'
   patch '/change-password' => 'users#changepw'
 
+  # Doctor resources routes
+  resources :doctors, except: %i[new edit]
+
+  # Recipe resources routes
+  resources :recipes, except: %i[new edit]
+
   # Books resources routes
   resources :books, except: %i[new edit]
   # get '/books' => 'books#index'
